@@ -20,6 +20,7 @@ public class EntityLimitListener implements Listener {
     private final Limits addon;
 
     /**
+     * TODO: Add island-level limits
      * Handles entity and natural limitations
      * @param addon - Limits object
      */

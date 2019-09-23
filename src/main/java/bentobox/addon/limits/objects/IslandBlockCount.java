@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 
 import com.google.gson.annotations.Expose;
 
@@ -23,12 +24,15 @@ public class IslandBlockCount implements DataObject {
 
     @Expose
     private Map<Material, Integer> blockCount = new HashMap<>();
-
+    
     /**
      * Permission based limits
      */
     @Expose
     private Map<Material, Integer> blockLimits = new HashMap<>();
+    
+    @Expose
+    private Map<EntityType, Integer> entityLimits = new HashMap<>();
 
     // Required for YAML database
     public IslandBlockCount() {}
@@ -158,4 +162,37 @@ public class IslandBlockCount implements DataObject {
     public void setGameMode(String gameMode) {
         this.gameMode = gameMode;
     }
-}
+
+    /**
+     * Get the entity limit for this island
+     * @param e - entity type
+     * @return limit or -1 for unlimited
+     */
+    public Integer getEntityLimit(EntityType e) {
+        return entityLimits.getOrDefault(e, -1);
+    }
+    
+    /**
+     * Set an entity limit for this island
+     * @param e - entity type
+     * @param limit - limit
+     */
+    public void setEntityLimit(EntityType e, int limit) {
+        entityLimits.put(e, limit);
+    }
+
+    /**
+     * @return the entityLimits
+     */
+    public Map<EntityType, Integer> getEntityLimits() {
+        return entityLimits;
+    }
+
+    /**
+     * @param entityLimits the entityLimits to set
+     */
+    public void setEntityLimits(Map<EntityType, Integer> entityLimits) {
+        this.entityLimits = entityLimits;
+    }
+    
+ }

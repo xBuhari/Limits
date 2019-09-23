@@ -41,7 +41,7 @@ public class Settings {
         limits.entrySet().stream().map(e -> "Limit " + e.getKey().toString() + " to " + e.getValue()).forEach(addon::log);
     }
 
-    private EntityType getType(String key) {
+    public static EntityType getType(String key) {
         return Arrays.stream(EntityType.values()).filter(v -> v.name().equalsIgnoreCase(key)).findFirst().orElse(null);
     }
 
