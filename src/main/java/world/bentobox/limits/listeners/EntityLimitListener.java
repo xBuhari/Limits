@@ -65,7 +65,7 @@ public class EntityLimitListener implements Listener {
     }
 
     /**
-     * Handles minecart placing
+     * Handles minecart placings
      * @param e - event
      */
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
